@@ -22,7 +22,6 @@ import { IStory } from '../models/IStory';
 export class HackerNewsService {
   baseUrl = environment.apiUrl;
   baseHackerUrl = this.baseUrl + 'hackernews';
-  
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8'
@@ -36,11 +35,12 @@ export class HackerNewsService {
 
   // https://app.pluralsight.com/guides/sending-request-processing-mapped-response-retrieve-data
   getNewStories(): Observable<IStory[]> {
-    console.log(this.baseHackerUrl);
+      console.log(this.baseHackerUrl);
       return this.http
       .get(this.baseHackerUrl)
           .pipe(
               map((data: IStory[]) => {
+                console.log(data);
                   return data;
               }),
               catchError(this.handleError)
