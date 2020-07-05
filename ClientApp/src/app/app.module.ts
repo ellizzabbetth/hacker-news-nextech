@@ -28,6 +28,7 @@ import { HackerNewsComponent } from './hacker-news/hacker-news.component';
         { path: '', component: HomeComponent, pathMatch: 'full' },
         { path: 'counter', component: CounterComponent },
         { path: 'fetch-data', component: FetchDataComponent },
+        { path: 'hacker-news', component: HackerNewsComponent },
       ])
     ],
     providers: [],
