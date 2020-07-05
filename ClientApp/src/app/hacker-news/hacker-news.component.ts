@@ -9,9 +9,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./hacker-news.component.css'],
 })
 export class HackerNewsComponent implements OnInit {
-  newStories$: Observable<IStory[]>;
+  newStories$: IStory[];
 
-  constructor(private hackerNewsService: HackerNewsService) {}
+  constructor(private hackerNewsService: HackerNewsService) {
+  }
 
   ngOnInit() {
     this.loadStories();
@@ -28,11 +29,18 @@ export class HackerNewsComponent implements OnInit {
   }
 
   get(searchTerm: string) {
-    searchTerm = 'aws';
-    console.log('calling get ', searchTerm);
-     this.hackerNewsService.getStories(searchTerm);
+     // searchTerm = 'aws'; // todo : remove
+      // console.log('calling get ', searchTerm);
+      this.hackerNewsService.getStories('aws').subscribe(
+        result => {
+          console.log(result);
+          this.newStories$ = result;
+        },
+        error => console.error(error)
+      );
 
-  
+
+
     // this.http
     //   .get<HackerNewsStory[]>(
     //     `${this.baseUrl}hackernews?searchTerm=${searchTerm}`
@@ -43,6 +51,9 @@ export class HackerNewsComponent implements OnInit {
     //     },
     //     error => console.error(error)
     //   );
+
+
+
   }
 
   open(url: string) {

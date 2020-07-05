@@ -23,23 +23,26 @@ import { IStory } from '../models/IStory';
 export class HackerNewsService {
   baseUrl = environment.apiUrl;
   baseHackerUrl = this.baseUrl + 'hackernews';
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8'
-    })
-  };
+  // private headers: HttpHeaders;
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json; charset=utf-8'
+  //   })
+  // };
   newStories$: IStory[];
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    // this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+  }
 
 
   // https://app.pluralsight.com/guides/sending-request-processing-mapped-response-retrieve-data
   getNewStories(): Observable<IStory[]> {
       console.log(this.baseHackerUrl);
       return this.http
-      .get(this.baseHackerUrl)
+      .get(this.baseHackerUrl)// , {headers: this.headers})
           .pipe(
               map((data: IStory[]) => {
                 console.log(data);
@@ -49,19 +52,25 @@ export class HackerNewsService {
           );
   }
 
-  getStories(searchTerm: string) {
+  getStories(searchTerm: string): Observable<IStory[]>  {
     console.log(this.baseHackerUrl, searchTerm);
-    this.http
+    return this.http
       .get<IStory[]>(
         `${this.baseHackerUrl}?searchTerm=${searchTerm}`
-      )
-      .subscribe(
-        result => {
-          console.log(result);
-          this.newStories$ = result;
-        },
-        error => console.error(error)
       );
+       // below works :)
+      // this.http
+      // .get<IStory[]>(
+      //   `${this.baseHackerUrl}?searchTerm=${searchTerm}`
+      // )
+      // .subscribe(
+      //   result => {
+      //     console.log(result);
+      //     this.newStories$ = result;
+      //   },
+      //   error => console.error(error)
+      // );
+
        // this.newStories$ = [
     //   {
     //     title:
