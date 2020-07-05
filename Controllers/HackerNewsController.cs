@@ -1,3 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using hacker_news_nextech.Model;
+using hacker_news_nextech.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
 namespace hacker_news_nextech.Controllers
 {
   

@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { HackerNewsComponent } from './hacker-news/hacker-news.component';
-
+import { HackerNewsService } from  './services/hacker-news.service';
 @NgModule({
    declarations: [
       AppComponent,
@@ -31,7 +31,7 @@ import { HackerNewsComponent } from './hacker-news/hacker-news.component';
         { path: 'hacker-news', component: HackerNewsComponent },
       ])
     ],
-    providers: [],
+    providers: [HackerNewsService],
     bootstrap: [AppComponent]
   })
   export class AppModule { }
