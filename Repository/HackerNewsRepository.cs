@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using hacker_news_nextech.Model;
 
-namespace hacker_news_nextech.Repsoitory
+namespace hacker_news_nextech.Repository
 {
     public class HackerNewsRepository: IHackerNewsRepository
     {

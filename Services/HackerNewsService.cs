@@ -13,7 +13,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.Extensions.Caching.Memory;
-using hacker_news_nextech.Repsoitory;
+using hacker_news_nextech.Repository;
 using hacker_news_nextech.Model;
 
 namespace hacker_news_nextech.Services
